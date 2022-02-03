@@ -10,9 +10,10 @@ import {AgendaComponent} from "./modulo_tienda/agenda/agenda.component";
 const routes: Routes = [
   { path: 'dashboard-admin' , component: DashboardAdminComponent},
   { path: 'listapagos' , component: LisPagoComponent},
-  { path: 'pagos/:id', component: LisPagoComponent},
+  { path: 'pagos/:id', component: GesPagoComponent},
   {path: 'agenda', component: AgendaComponent},
-  { path: '**', pathMatch: 'full', redirectTo: 'dashboard-admin'}]
+  { path: '**', pathMatch: 'full', redirectTo: 'dashboard-admin'}
+]
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
