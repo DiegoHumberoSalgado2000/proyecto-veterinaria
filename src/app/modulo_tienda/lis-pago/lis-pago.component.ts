@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PagosService} from "../../services/pagos.service";
+import {PagosModel} from "../../models/Pagos.Model";
 
 @Component({
   selector: 'app-lis-pago',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LisPagoComponent implements OnInit {
 
-  constructor() { }
+  pagos:PagosModel[]=[];
+  constructor(private _pagosService: PagosService) { }
 
   ngOnInit(): void {
+    this._pagosService.listar()
+      .subscribe(resp=>{
+      this.pagos=resp;
+    })
   }
 
 }

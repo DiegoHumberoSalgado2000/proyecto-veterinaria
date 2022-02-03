@@ -1,5 +1,5 @@
 export interface ProductInterface {
-  _id: string;
+  _id: string | null;
   name: string;
   code: string;
   description: string;
@@ -7,6 +7,6 @@ export interface ProductInterface {
   salePrice: string;
   quantity: number;
   stock: number;
-  dateCreate: Date;
-  dateUpdate: Date;
+  dateCreate: string;
+  dateUpdate: string;
 }

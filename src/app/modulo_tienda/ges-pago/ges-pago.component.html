@@ -15,7 +15,7 @@
 <div class="container">
   <div class="row mt-5">
     <div class="col">
-      <form >
+      <form (ngSubmit)="guardar(formPago)" #formPago="ngForm">
         <div class="form-group mb-3">
           <label>Id</label>
           <input
@@ -23,7 +23,7 @@
             class="form-control"
             id="_id"
             name="_id"
-
+            [(ngModel)]="pago._id"
             placeholder="Identificador"
             disabled>
         </div>
@@ -33,9 +33,9 @@
           <input
             type="text"
             class="form-control"
-            id="fullName"
-            name="fullName"
-
+            id="name"
+            name="name"
+            [(ngModel)]="pago.name"
             placeholder="Nombres">
         </div>
 
@@ -44,43 +44,76 @@
           <input
             type="text"
             class="form-control"
-            id="phone"
-            name="phone"
-
+            id="code"
+            name="code"
+            [(ngModel)]="pago.code"
             placeholder="Codigo">
         </div>
 
         <div class="form-group mb-3">
           <label>Descripcion</label>
           <textarea
-            type="email"
+            type="text"
             class="form-control"
-            id="email"
-            name="email"
-
+            id="description"
+            name="description"
+            [(ngModel)]="pago.description"
             placeholder="Descripcion"></textarea>
         </div>
 
         <div class="form-group mb-3">
           <label>Precio de compra</label>
           <input
-            type="number"
+            type="text"
             class="form-control"
-            id="password"
-            name="password"
-
+            id="purchasePrice"
+            name="purchasePrice"
+             [(ngModel)]="pago.purchasePrice"
             placeholder="Precio de compra">
         </div>
 
         <div class="form-group mb-3">
           <label>precio de venta</label>
           <input
-            type="number"
+            type="text"
             class="form-control"
-            id="address"
-            name="address"
-
+            id="salePrice"
+            name="salePrice"
+             [(ngModel)]="pago.salePrice"
             placeholder="precio de venta">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Cantidadf</label>
+          <input
+            type="text"
+            class="form-control"
+            id="quantity"
+            name="quantity"
+            [(ngModel)]="pago.quantity"
+            placeholder="Cantiadad">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>Valores</label>
+          <input
+            type="text"
+            class="form-control"
+            id="stock"
+            name="stock"
+            [(ngModel)]="pago.stock"
+            placeholder="Valores">
+        </div>
+
+        <div class="form-group mb-3">
+          <label>fecha Crear</label>
+          <input
+            type="date"
+            class="form-control"
+            id="dateCreate"
+            name="dateCreate"
+            [(ngModel)]="pago.dateCreate"
+            placeholder="fecha Actualizar">
         </div>
 
         <div class="form-group mb-3">
@@ -88,9 +121,9 @@
           <input
             type="date"
             class="form-control"
-            id=""
-            name=""
-
+            id="dateUpdate"
+            name="dateUpdate"
+            [(ngModel)]="pago.dateUpdate"
             placeholder="fecha Actualizar">
         </div>
 
