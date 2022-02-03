@@ -22,6 +22,7 @@ import { UsuarioComponent } from './modulo_admin/components/usuario/usuario.comp
 import { UsuariosComponent } from './modulo_admin/components/usuarios/usuarios.component';
 import { GesPagoComponent } from './modulo_tienda/ges-pago/ges-pago.component';
 import { LisPagoComponent } from './modulo_tienda/lis-pago/lis-pago.component';
+import { AgendaComponent } from './modulo_tienda/agenda/agenda.component';
 
 @NgModule({
   declarations: [
@@ -41,7 +42,8 @@ import { LisPagoComponent } from './modulo_tienda/lis-pago/lis-pago.component';
     UsuarioComponent,
     UsuariosComponent,
     GesPagoComponent,
-    LisPagoComponent
+    LisPagoComponent,
+    AgendaComponent
   ],
   imports: [
     BrowserModule,
