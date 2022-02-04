@@ -11,12 +11,16 @@ import Swal from "sweetalert2";
 export class LisPagoComponent implements OnInit {
 
   pagos:PagosModel[]=[];
+  cargando=false;
+
   constructor(private _pagosService: PagosService) { }
 
   ngOnInit(): void {
+    this.cargando=true;
     this._pagosService.listar()
       .subscribe(resp=>{
       this.pagos=resp;
+      this.cargando=false;
     })
 
   }

@@ -11,8 +11,7 @@
   </div>
 </div>
 
-<table
-       class="table mt-5">
+<table *ngIf="!cargando && pagos.length > 0" class="table mt-5">
   <thead class="thead-dark">
   <tr>
     <th scope="col">#</th>
@@ -51,7 +50,7 @@
   </tbody>
 </table>
 
-<div class="alert alert-info text-center mt-3">
+<div *ngIf="cargando" class="alert alert-info text-center mt-3">
 <h5>Cargando</h5>
   <p>
     <i class="fas fa-spinner fa-spin fa-2x"></i>
@@ -59,7 +58,7 @@
   <p>Por favor espere...</p>
 </div>
 
-<div class="alert alert-warning text-center mt-3">
+<div *ngIf="!cargando && pagos.length===0" class="alert alert-warning text-center mt-3">
   <h5>No hay registros</h5>
   <p>
     <i class="fas fa-exclamation fa-2x"></i>

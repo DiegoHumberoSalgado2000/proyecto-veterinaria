@@ -1,7 +1,7 @@
 import {ProductInterface} from "../modulo_tienda/interfaces/Product.Interface";
 
 export class PagosModel implements ProductInterface{
-  _id: string| null="";
+  _id: string | null="";
   name: string="";
   code: string="";
   description: string="";

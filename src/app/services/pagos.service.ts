@@ -38,12 +38,14 @@ eliminar(id: string | null){
 
 listaPago(id:string | null){
     return this._http.get(`${this.url}/pagos/${id}.json`);
+
 }
 
   listar(){
     return this._http.get(`${ this.url }/pagos.json`)
       .pipe(
-        map(this._convertirArray)
+        map(this._convertirArray),
+        delay(3000)
       );
   }
 
@@ -60,7 +62,7 @@ Object.keys(pagoObj).forEach(key=>{
   const pago:PagosModel=pagoObj[key];
   pago._id=key;
 
-  pagos.push(pago)
+  pagos.push(pago);
 })
 
 return pagos;
