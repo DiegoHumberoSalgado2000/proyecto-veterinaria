@@ -13,7 +13,21 @@ export class PagosService {
   constructor(private _http:HttpClient) { }
 
 create(pago: PagosModel){
-return this._http.post(`${this.url}/pagos.json`, pago);
+return this._http.post(`${this.url}/pagos.json`, pago)
+  .pipe(
+    map((resp:any)=>{
+      pago._id=resp.name;
+      return pago;
+    })
+  )
+}
+
+actualizar(pago: PagosModel){
+return this._http.put(`${this.url}/pagos/${pago._id}.json`,pago);
+}
+
+eliminar(id: string | null){
+    return this._http.delete(`${this.url}/pagos/${id}.json`);
 }
 
   listar(){

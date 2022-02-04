@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {PagosService} from "../../services/pagos.service";
 import {PagosModel} from "../../models/Pagos.Model";
+import Swal from "sweetalert2";
+
 
 @Component({
   selector: 'app-lis-pago',
@@ -18,5 +20,28 @@ export class LisPagoComponent implements OnInit {
       this.pagos=resp;
     })
   }
+eliminar(pago: PagosModel, i: number){
 
+    //@ts-ignore
+    Swal.fire({
+    title: '¿Esta Seguro?',
+      text: `Desea eliminar el producto ${pago.name}`,
+      icon: 'question',
+      showCancelButton: true,
+      showConfirmButton: true
+    }).then(resp=>{
+      if (resp.value){
+        this.pagos.splice(i, 1);
+        this._pagosService.eliminar(pago._id).subscribe();
+        Swal.fire({
+          icon: 'success',
+          text: `Se a Eliminado correctamente el producto ${pago.name}`,
+          allowOutsideClick: false,
+          showConfirmButton: true,
+          allowEscapeKey: false
+        });
+      }
+    });
+
+}
 }
