@@ -3,7 +3,6 @@ import {PagosService} from "../../services/pagos.service";
 import {PagosModel} from "../../models/Pagos.Model";
 import Swal from "sweetalert2";
 
-
 @Component({
   selector: 'app-lis-pago',
   templateUrl: './lis-pago.component.html',
@@ -19,7 +18,9 @@ export class LisPagoComponent implements OnInit {
       .subscribe(resp=>{
       this.pagos=resp;
     })
+
   }
+
 eliminar(pago: PagosModel, i: number){
 
     //@ts-ignore

@@ -23,11 +23,21 @@ return this._http.post(`${this.url}/pagos.json`, pago)
 }
 
 actualizar(pago: PagosModel){
-return this._http.put(`${this.url}/pagos/${pago._id}.json`,pago);
+    const pagoAux={
+      ...pago
+    }
+    //@ts-ignore
+  delete pagoAux._id;
+
+return this._http.put(`${this.url}/pagos/${pago._id}.json`,pagoAux);
 }
 
 eliminar(id: string | null){
     return this._http.delete(`${this.url}/pagos/${id}.json`);
+}
+
+listaPago(id:string | null){
+    return this._http.get(`${this.url}/pagos/${id}.json`);
 }
 
   listar(){

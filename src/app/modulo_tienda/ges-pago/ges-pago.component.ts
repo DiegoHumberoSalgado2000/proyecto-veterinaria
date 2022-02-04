@@ -5,6 +5,7 @@ import {NgForm} from "@angular/forms";
 import {PagosService} from "../../services/pagos.service";
 import Swal from "sweetalert2";
 import {Observable} from "rxjs";
+import {ActivatedRoute} from "@angular/router";
 
 @Component({
   selector: 'app-ges-pago',
@@ -15,9 +16,20 @@ export class GesPagoComponent implements OnInit {
 
   pago:PagosModel=new PagosModel();
 
-  constructor(private _pagoService:PagosService) { }
+  constructor(private _pagoService:PagosService, private _route: ActivatedRoute) { }
 
   ngOnInit(): void {
+  const id=this._route.snapshot.paramMap.get('id');
+  console.log("ID: ",id)
+    if (id !=='registrar'){
+      this._pagoService.listaPago(id)
+        //@ts-ignore
+        .subscribe((resp: PagosModel)=>{
+          this.pago=resp;
+          this.pago._id=id;
+
+        })
+    }
   }
 
 guardar(formPago:NgForm){
@@ -39,7 +51,11 @@ return;
 
     let peticion: Observable<any>;
 
-    peticion=this._pagoService.create(this.pago);
+    if (this.pago._id){
+      peticion=this._pagoService.actualizar(this.pago);
+    }else {
+      peticion=this._pagoService.create(this.pago);
+    }
 
   //@ts-ignore
   peticion.subscribe(resp=>{
